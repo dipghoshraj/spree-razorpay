@@ -37,8 +37,7 @@
           });
         },
         "prefill": {
-            "name": "<%= spree_current_user.try(:email) %>",
-            "email": "<%= spree_current_user.try(:email) %>"
+            "mobile": "<%= spree_current_user.try(:mobile) %>"
         },
         "notes": {
             "address": "<%= payment_method.preferences[:merchant_address] %>"
