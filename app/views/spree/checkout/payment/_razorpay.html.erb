@@ -20,6 +20,26 @@
         "amount": "<%= current_order.amount_in_paise %>",
         'name': "<%= payment_method.preferences[:merchant_name] %>",
         'description': "<%= payment_method.preferences[:merchant_description] %>",
+        config: {
+          display: {
+            blocks: {
+              upipay: {
+                name: "Pay with upi",
+                instruments: [
+                  {
+                    method: 'upi',
+                    flows: [ "qr"],
+                    apps: ["google_pay", "phonepe"]
+                  }
+                ]
+              }
+            },
+            sequence: ["block.upipay"],
+            preferences: {
+              show_default_blocks: true // Should Checkout show its default blocks?
+            }
+          }
+        },
         "handler": function (response){
           $(document).ajaxStart(function() {
             $.blockUI({ message: $('#blockUI-message') });
